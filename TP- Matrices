@@ -1,0 +1,58 @@
+##Dado una matriz de n x m. Queremos hacer un algoritmo que me pida una posición
+##i y j , y me informe cual es la suma de los elementos que estan alrededor del de la
+##posición dada. Tener en cuenta que la posición ingresada puede ser una esquina o
+##una pared, y la suma tiene que tener en cuenta esto.
+
+import random
+
+def matriz_random(n, m):
+    return [[random.randint(0, 10) for _ in range(m)] for _ in range(n)]
+
+matriz1 = matriz_random(4, 4)
+print("Matriz")
+for fila in matriz1:
+    print(fila)
+
+# Pedir posiciones
+i = int(input("Indicar una posicion i: "))
+j = int(input("Indicar una posicion j: "))
+
+# Verificar que la posición esté dentro de la matriz
+if i < 0 or i >= len(matriz1) or j < 0 or j >= len(matriz1[0]):
+    print("Error: Posición fuera de los límites de la matriz")
+else:
+    suma = 0
+
+    # Arriba izquierda
+    if i-1 >= 0 and j-1 >= 0:
+        suma += matriz1[i-1][j-1]
+
+    # Arriba
+    if i-1 >= 0:
+        suma += matriz1[i-1][j]
+
+    # Arriba derecha
+    if i-1 >= 0 and j+1 < len(matriz1[0]):
+        suma += matriz1[i-1][j+1]
+
+    # Izquierda
+    if j-1 >= 0:
+        suma += matriz1[i][j-1]
+
+    # Derecha
+    if j+1 < len(matriz1[0]):
+        suma += matriz1[i][j+1]
+
+    # Abajo izquierda
+    if i+1 < len(matriz1) and j-1 >= 0:
+        suma += matriz1[i+1][j-1]
+
+    # Abajo
+    if i+1 < len(matriz1):
+        suma += matriz1[i+1][j]
+
+    # Abajo derecha
+    if i+1 < len(matriz1) and j+1 < len(matriz1[0]):
+        suma += matriz1[i+1][j+1]
+
+    print(f"Suma de elementos alrededor de posicion ({i},{j}): {suma}")
