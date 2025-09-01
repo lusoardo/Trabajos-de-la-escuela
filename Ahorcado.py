@@ -31,13 +31,13 @@ def insertarEnPosicion(letra, palabra, tablero, i=0):
 
 # ------------------- Programa principal -------------------
 
-palabra = ingresar_palabra()         # palabra secreta en lista
+palabra = pedir_palabra()         # palabra secreta en lista
 tablero = dibujar_lineas(palabra)    # tablero con guiones bajos
 letrasJugadas = []                   # letras ya usadas
 errores = 0                          # contador de errores
 max_errores = 6
 
-print("\nComienza el juego del Ahorcado!")
+print("Comienza el juego del Ahorcado!")
 mostrar_lineas(tablero)
 
 while errores < max_errores and "_" in tablero:
@@ -66,3 +66,4 @@ if "_" not in tablero:
     print("\n¡Felicidades! Adivinaste la palabra secreta.")
 else:
     print("\nHas perdido. La palabra era:", "".join(palabra))
+
